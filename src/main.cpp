@@ -1959,7 +1959,7 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
                                REJECT_INVALID, "bad-cb-amount");
 
     // All block rewards are to be paid to the foundation
-    if (block.vtx[0].scriptPubKey != GetFoundationScript()) {
+    if (block.vtx[0].vout[0].scriptPubKey != GetFoundationScript()) {
 	return state.DoS(100, error("ConnectBLock() : coinbase does not pay to the charity in the first output"));
     }
     if (block.vtx[0].vout[0].nValue < GetBlockValue(pindex->nHeight, nFees)) {
