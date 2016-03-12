@@ -4,7 +4,7 @@
 
 #include "recentrequeststablemodel.h"
 
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 #include "optionsmodel.h"
 

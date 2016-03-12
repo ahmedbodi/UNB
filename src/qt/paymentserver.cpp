@@ -4,7 +4,7 @@
 
 #include "paymentserver.h"
 
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"

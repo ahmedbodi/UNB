@@ -5,7 +5,7 @@
 #include "transactiontablemodel.h"
 
 #include "addresstablemodel.h"
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"
 #include "optionsmodel.h"

@@ -3,12 +3,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "voxels-config.h"
+#include "bitcoin-config.h"
 #endif
 
 #include "optionsmodel.h"
 
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 
 #include "init.h"

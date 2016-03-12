@@ -162,7 +162,7 @@ voxelsd_LDADD = \
 if ENABLE_WALLET
 voxelsd_LDADD += libvoxels_wallet.a
 endif
-voxelsd_SOURCES = voxelsd.cpp
+voxelsd_SOURCES = bitcoind.cpp
 #
 
 if TARGET_WINDOWS
@@ -177,11 +177,11 @@ voxels_cli_LDADD = \
   libvoxels_cli.a \
   libvoxels_common.a \
   $(BOOST_LIBS)
-voxels_cli_SOURCES = voxels-cli.cpp
+voxels_cli_SOURCES = bitcoin-cli.cpp
 #
 
 if TARGET_WINDOWS
-voxels_cli_SOURCES += voxels-cli-res.rc
+voxels_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 # NOTE: This dependency is not strictly necessary, but without it make may try to build both in parallel, which breaks the LevelDB build system in a race

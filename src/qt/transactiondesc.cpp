@@ -4,7 +4,7 @@
 
 #include "transactiondesc.h"
 
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiutil.h"
 
 #include "base58.h"

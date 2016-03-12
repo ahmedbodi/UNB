@@ -2,9 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "voxelsamountfield.h"
+#include "bitcoinamountfield.h"
 
-#include "voxelsunits.h"
+#include "bitcoinunits.h"
 #include "guiconstants.h"
 #include "qvaluecombobox.h"
 

@@ -4,8 +4,8 @@
 
 #include "guiutil.h"
 
-#include "voxelsaddressvalidator.h"
-#include "voxelsunits.h"
+#include "bitcoinaddressvalidator.h"
+#include "bitcoinunits.h"
 #include "qvalidatedlineedit.h"
 #include "walletmodel.h"
 

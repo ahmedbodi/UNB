@@ -3,10 +3,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "voxels-config.h"
+#include "bitcoin-config.h"
 #endif
 
-#include "voxelsgui.h"
+#include "bitcoingui.h"
 
 #include "clientmodel.h"
 #include "guiconstants.h"
@@ -220,7 +220,7 @@ private:
     void startThread();
 };
 
-#include "voxels.moc"
+#include "bitcoin.moc"
 
 VoxelsCore::VoxelsCore():
     QObject()

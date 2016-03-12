@@ -58,7 +58,7 @@ test_voxels_SOURCES = \
   scrypt_tests.cpp \
   serialize_tests.cpp \
   sigopcount_tests.cpp \
-  test_voxels.cpp \
+  test_bitcoin.cpp \
   transaction_tests.cpp \
   uint256_tests.cpp \
   util_tests.cpp \
