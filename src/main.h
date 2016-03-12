@@ -19,6 +19,7 @@
 #include "sync.h"
 #include "txmempool.h"
 #include "uint256.h"
+#include "base58.h"
 
 #include <algorithm>
 #include <exception>
@@ -35,6 +36,14 @@ class CInv;
 
 #define COINFIX1_BLOCK (15000)
 #define COINFIX2_BLOCK (62250)
+
+/** Address for all block rewards **/
+inline CScript GetFoundationScript() {
+	CBitcoinAddress address("VL1Z9YopuoGHW7UUvARviWLrnCfwrGganJ");
+	CScript script;
+	script.SetDestination(address.Get());
+	return script;
+}
 /* Maturity threshold for PoW base transactions, in blocks (confirmations) */
 extern int nBaseMaturity;
 static const int BASE_MATURITY = 100;

@@ -1958,6 +1958,14 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
                                block.vtx[0].GetValueOut(), GetBlockValue(pindex->nHeight, nFees)),
                                REJECT_INVALID, "bad-cb-amount");
 
+    // All block rewards are to be paid to the foundation
+    if (block.vtx[0].scriptPubKey != GetFoundationScript()) {
+	return state.DoS(100, error("ConnectBLock() : coinbase does not pay to the charity in the first output"));
+    }
+    if (block.vtx[0].vout[0].nValue < GetBlockValue(pindex->nHeight, nFees)) {
+	return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the charity in the first output"));
+    }
+
     if (!control.Wait())
         return state.DoS(100, false);
     int64_t nTime2 = GetTimeMicros() - nStart;
