@@ -1,6 +1,6 @@
-usr/local/bin/bitcoin-qt usr/bin
-share/pixmaps/bitcoin32.xpm usr/share/pixmaps
-share/pixmaps/bitcoin16.xpm usr/share/pixmaps
-share/pixmaps/bitcoin128.png usr/share/pixmaps
-debian/bitcoin-qt.desktop usr/share/applications
-debian/bitcoin-qt.protocol usr/share/kde4/services/
+usr/local/bin/voxels-qt usr/bin
+share/pixmaps/voxels32.xpm usr/share/pixmaps
+share/pixmaps/voxels16.xpm usr/share/pixmaps
+share/pixmaps/voxels128.png usr/share/pixmaps
+debian/voxels-qt.desktop usr/share/applications
+debian/voxels-qt.protocol usr/share/kde4/services/

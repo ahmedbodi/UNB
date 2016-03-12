@@ -77,12 +77,12 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>Address king pamag-Tanggap</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Reni reng kekang Bitcoin address king pamagpadalang kabayaran. Lawan mulang masalese reng alaga ampo ing address na ning tumanggap bayu ka magpadalang barya.</translation>
+        <source>These are your Voxels addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Reni reng kekang Voxels address king pamagpadalang kabayaran. Lawan mulang masalese reng alaga ampo ing address na ning tumanggap bayu ka magpadalang barya.</translation>
     </message>
     <message>
-        <source>These are your Bitcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Reni reng kekang Bitcoin addresses keng pamananggap bayad. Rerekomenda mi na gumamit kang bayung address keng balang transaksiyon.</translation>
+        <source>These are your Voxels addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Reni reng kekang Voxels addresses keng pamananggap bayad. Rerekomenda mi na gumamit kang bayung address keng balang transaksiyon.</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
@@ -167,8 +167,8 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>Kumpirman ya ing wallet encryption</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR BITCOINS&lt;/b&gt;!</source>
-        <translation>Kapabaluan: Istung in-encrypt me ing kekang wallet at meala ya ing passphrase na, ma-&lt;b&gt;ALA NO NGAN RING KEKANG BITCOINS&lt;/b&gt;</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR VOXELSS&lt;/b&gt;!</source>
+        <translation>Kapabaluan: Istung in-encrypt me ing kekang wallet at meala ya ing passphrase na, ma-&lt;b&gt;ALA NO NGAN RING KEKANG VOXELSS&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -187,8 +187,8 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>Me-encrypt ne ing wallet</translation>
     </message>
     <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>Ing Bitcoin ngeni magsara ya ban ayari ing proseso ning pamag-encrypt. Tandanan yu king pamag-encrypt wallet, ali nala aprotektan king kabuuan reng bitcoins yu kareng malware a kasalunsungan atiu kareng computer yu.</translation>
+        <source>Voxels will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your voxelss from being stolen by malware infecting your computer.</source>
+        <translation>Ing Voxels ngeni magsara ya ban ayari ing proseso ning pamag-encrypt. Tandanan yu king pamag-encrypt wallet, ali nala aprotektan king kabuuan reng voxelss yu kareng malware a kasalunsungan atiu kareng computer yu.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
@@ -220,7 +220,7 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
     </message>
 </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>VoxelsGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>I-sign ing &amp;mensayi</translation>
@@ -254,8 +254,8 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>Tuknangan ing aplikasyon</translation>
     </message>
     <message>
-        <source>Show information about Bitcoin</source>
-        <translation>Ipakit ing impormasyun tungkul king Bitcoin</translation>
+        <source>Show information about Voxels</source>
+        <translation>Ipakit ing impormasyun tungkul king Voxels</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -282,12 +282,12 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>&amp;Alilan ing Passphrase...</translation>
     </message>
     <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>Magpadalang barya king Bitcoin address</translation>
+        <source>Send coins to a Voxels address</source>
+        <translation>Magpadalang barya king Voxels address</translation>
     </message>
     <message>
-        <source>Modify configuration options for Bitcoin</source>
-        <translation>Alilan ing pipamilian konpigurasion para keng Bitcoin</translation>
+        <source>Modify configuration options for Voxels</source>
+        <translation>Alilan ing pipamilian konpigurasion para keng Voxels</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -310,8 +310,8 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>&amp;Beripikan ing message...</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>Voxels</source>
+        <translation>Voxels</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -346,16 +346,16 @@ Ing produktung ini atin yang makayabeng software a gewa dareng OpenSSL Project p
         <translation>[testnet]</translation>
     </message>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Kapilubluban ning Bitcoin</translation>
+        <source>Voxels Core</source>
+        <translation>Kapilubluban ning Voxels</translation>
     </message>
     <message>
-        <source>Bitcoin client</source>
-        <translation>Bitcoin client</translation>
+        <source>Voxels client</source>
+        <translation>Voxels client</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Bitcoin network</source>
-        <translation><numerusform>%n ya ing aktibong koneksion keng Bitcoin network</numerusform><numerusform>%n lareng aktibong koneksion keng Bitcoin network</numerusform></translation>
+        <source>%n active connection(s) to Voxels network</source>
+        <translation><numerusform>%n ya ing aktibong koneksion keng Voxels network</numerusform><numerusform>%n lareng aktibong koneksion keng Voxels network</numerusform></translation>
     </message>
     <message>
         <source>Processed %1 of %2 (estimated) blocks of transaction history.</source>
@@ -430,8 +430,8 @@ Address: %4
         <translation>Maka-&lt;b&gt;encrypt&lt;/b&gt; ya ing wallet at kasalukuyan yang maka-&lt;b&gt;locked&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Bitcoin can no longer continue safely and will quit.</source>
-        <translation>Atin kamalian a milyari. Ali ne magsilbing sumulung pa ing Bitcoin at kailangan na ng tuknang.</translation>
+        <source>A fatal error occurred. Voxels can no longer continue safely and will quit.</source>
+        <translation>Atin kamalian a milyari. Ali ne magsilbing sumulung pa ing Voxels at kailangan na ng tuknang.</translation>
     </message>
 </context>
 <context>
@@ -511,8 +511,8 @@ Address: %4
         <translation>Ing pepalub yung address "%1" ati na yu king aklat dareng address</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Bitcoin address.</source>
-        <translation>Ing pepalub yung address "%1" ali ya katanggap-tanggap a Bitcoin address.</translation>
+        <source>The entered address "%1" is not a valid Voxels address.</source>
+        <translation>Ing pepalub yung address "%1" ali ya katanggap-tanggap a Voxels address.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -529,8 +529,8 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Kapilubluban ning Bitcoin</translation>
+        <source>Voxels Core</source>
+        <translation>Kapilubluban ning Voxels</translation>
     </message>
     <message>
         <source>version</source>
@@ -568,8 +568,8 @@ Address: %4
         <translation>Malaus ka</translation>
     </message>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>Voxels</source>
+        <translation>Voxels</translation>
     </message>
     <message>
         <source>Error</source>
@@ -594,20 +594,20 @@ Address: %4
         <translation>Mamayad &amp;bayad para king transaksion </translation>
     </message>
     <message>
-        <source>Automatically start Bitcoin after logging in to the system.</source>
-        <translation>Umpisan yang antimu ing Bitcoin kaibat mekapag-log in king sistema.</translation>
+        <source>Automatically start Voxels after logging in to the system.</source>
+        <translation>Umpisan yang antimu ing Voxels kaibat mekapag-log in king sistema.</translation>
     </message>
     <message>
-        <source>&amp;Start Bitcoin on system login</source>
-        <translation>&amp;Umpisan ya ing Bitcoin king pamag-log-in na ning sistema.</translation>
+        <source>&amp;Start Voxels on system login</source>
+        <translation>&amp;Umpisan ya ing Voxels king pamag-log-in na ning sistema.</translation>
     </message>
     <message>
         <source>&amp;Network</source>
         <translation>&amp;Network</translation>
     </message>
     <message>
-        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ibuklat yang antimanu ing Bitcoin client port king router. Gagana yamu ini istung ing router mu susuporta yang UPnP at magsilbi ya.</translation>
+        <source>Automatically open the Voxels client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ibuklat yang antimanu ing Voxels client port king router. Gagana yamu ini istung ing router mu susuporta yang UPnP at magsilbi ya.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -662,8 +662,8 @@ Address: %4
         <translation>Amanu na ning user interface:</translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Bitcoin.</source>
-        <translation>Ing amanu na ning user interface maliari yang i-ayus o ilage keni. Ing ayus a ini magsilbi yamu istung pesibayuan meng pasibayu ing Bitcoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Voxels.</source>
+        <translation>Ing amanu na ning user interface maliari yang i-ayus o ilage keni. Ing ayus a ini magsilbi yamu istung pesibayuan meng pasibayu ing Voxels.</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -674,8 +674,8 @@ Address: %4
         <translation>Pilinan ing default subdivision unit a ipalto o ipakit king interface at istung magpadala kang barya.</translation>
     </message>
     <message>
-        <source>Whether to show Bitcoin addresses in the transaction list or not.</source>
-        <translation>Ipakit man ing Bitcoin address king listahan naning transaksion o ali.</translation>
+        <source>Whether to show Voxels addresses in the transaction list or not.</source>
+        <translation>Ipakit man ing Voxels address king listahan naning transaksion o ali.</translation>
     </message>
     <message>
         <source>&amp;Display addresses in transaction list</source>
@@ -705,8 +705,8 @@ Address: %4
         <translation>Form</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Ing makaltong impormasion mapalyaring luma ne. Ing kekang wallet otomatiku yang mag-synchronize keng Bitcoin network istung mekakonekta ne king network, oneng ing prosesung ini ali ya pa kumpletu.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Voxels network after a connection is established, but this process has not completed yet.</source>
+        <translation>Ing makaltong impormasion mapalyaring luma ne. Ing kekang wallet otomatiku yang mag-synchronize keng Voxels network istung mekakonekta ne king network, oneng ing prosesung ini ali ya pa kumpletu.</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -751,12 +751,12 @@ Address: %4
 <context>
     <name>QObject</name>
     <message>
-        <source>Bitcoin</source>
-        <translation>Bitcoin</translation>
+        <source>Voxels</source>
+        <translation>Voxels</translation>
     </message>
     <message>
-        <source>Enter a Bitcoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Magpalub kang Bitcoin address(e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a Voxels address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Magpalub kang Voxels address(e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -833,16 +833,16 @@ Address: %4
         <translation>Debug log file</translation>
     </message>
     <message>
-        <source>Open the Bitcoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Ibuklat ing Bitcoin debug log file menibat king kasalungsungan data directory. Magluat ya ining pilan segundu para kareng mamaragul a log files.</translation>
+        <source>Open the Voxels debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Ibuklat ing Voxels debug log file menibat king kasalungsungan data directory. Magluat ya ining pilan segundu para kareng mamaragul a log files.</translation>
     </message>
     <message>
         <source>Clear console</source>
         <translation>I-Clear ing console</translation>
     </message>
     <message>
-        <source>Welcome to the Bitcoin RPC console.</source>
-        <translation>Malaus kayu king Bitcoin RPC console.</translation>
+        <source>Welcome to the Voxels RPC console.</source>
+        <translation>Malaus kayu king Voxels RPC console.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
@@ -1054,8 +1054,8 @@ Address: %4
         <translation>Kopyan ing kasalungsungan pirma king system clipboard</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Bitcoin address</source>
-        <translation>Pirman ing mensayi ban patune na keka ya ining Bitcoin address</translation>
+        <source>Sign the message to prove you own this Voxels address</source>
+        <translation>Pirman ing mensayi ban patune na keka ya ining Voxels address</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1078,8 +1078,8 @@ Address: %4
         <translation>Ing address na ning mensayi nung nokarin me pirma ya ini (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Bitcoin address</source>
-        <translation>Beripikan ing mensayi ban asiguradu a me pirma ya ini gamit ing mepiling Bitcoin address</translation>
+        <source>Verify the message to ensure it was signed with the specified Voxels address</source>
+        <translation>Beripikan ing mensayi ban asiguradu a me pirma ya ini gamit ing mepiling Voxels address</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1090,8 +1090,8 @@ Address: %4
         <translation>Ibalik king dati reng ngan fields na ning pamag beripikang mensayi</translation>
     </message>
     <message>
-        <source>Enter a Bitcoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Magpalub kang Bitcoin address(e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a Voxels address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Magpalub kang Voxels address(e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <source>Click "Sign Message" to generate signature</source>
@@ -1149,8 +1149,8 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Bitcoin Core</source>
-        <translation>Kapilubluban ning Bitcoin</translation>
+        <source>Voxels Core</source>
+        <translation>Kapilubluban ning Voxels</translation>
     </message>
     <message>
         <source>[testnet]</source>
@@ -1494,7 +1494,7 @@ Address: %4
     <name>WalletView</name>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>voxels-core</name>
     <message>
         <source>Usage:</source>
         <translation>Pamanggamit:</translation>
@@ -1512,12 +1512,12 @@ Address: %4
         <translation>Pipamilian:</translation>
     </message>
     <message>
-        <source>Specify configuration file (default: bitcoin.conf)</source>
-        <translation>Pilinan ing configuration file(default: bitcoin.conf)</translation>
+        <source>Specify configuration file (default: voxels.conf)</source>
+        <translation>Pilinan ing configuration file(default: voxels.conf)</translation>
     </message>
     <message>
-        <source>Specify pid file (default: bitcoind.pid)</source>
-        <translation>Pilinan ing pid file(default: bitcoind.pid)</translation>
+        <source>Specify pid file (default: voxelsd.pid)</source>
+        <translation>Pilinan ing pid file(default: voxelsd.pid)</translation>
     </message>
     <message>
         <source>Specify data directory</source>
@@ -1572,8 +1572,8 @@ Address: %4
         <translation>Kapabaluan: Sobra ya katas ing makalage king -paytxfee. Ini ing maging bayad mu para king bayad na ning transaksion istung pepadala me ing transaksion a ini.</translation>
     </message>
     <message>
-        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Bitcoin will not work properly.</source>
-        <translation>Kapabaluan: Maliaring pakilawe ing oras at aldo a makalage king kekayung kompyuter nung istu la! Istung ing oras yu mali ya ali ya gumanang masalese ing Bitcoin.</translation>
+        <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Voxels will not work properly.</source>
+        <translation>Kapabaluan: Maliaring pakilawe ing oras at aldo a makalage king kekayung kompyuter nung istu la! Istung ing oras yu mali ya ali ya gumanang masalese ing Voxels.</translation>
     </message>
     <message>
         <source>Block creation options:</source>
@@ -1668,8 +1668,8 @@ Address: %4
         <translation>&amp;Impormasion</translation>
     </message>
     <message>
-        <source>SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Pipamilian ning SSL: (lawen ye ing Bitcoin Wiki para king SSL setup instructions)</translation>
+        <source>SSL options: (see the Voxels Wiki for SSL setup instructions)</source>
+        <translation>Pipamilian ning SSL: (lawen ye ing Voxels Wiki para king SSL setup instructions)</translation>
     </message>
     <message>
         <source>Send trace/debug info to console instead of debug.log file</source>
@@ -1764,12 +1764,12 @@ Address: %4
         <translation>Me-mali ya ing pamag-load king wallet.dat: Me-corrupt ya ing wallet</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer version of Bitcoin</source>
-        <translation>Me-mali ya ing pamag-load na ning wallet.dat: Ing wallet mangailangan yang bayung bersion na ning Bitcoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Voxels</source>
+        <translation>Me-mali ya ing pamag-load na ning wallet.dat: Ing wallet mangailangan yang bayung bersion na ning Voxels</translation>
     </message>
     <message>
-        <source>Wallet needed to be rewritten: restart Bitcoin to complete</source>
-        <translation>Ing wallet mangailangan yang misulat pasibayu: Umpisan yang pasibayu ing Bitcoin ban ma-kumpleto ya</translation>
+        <source>Wallet needed to be rewritten: restart Voxels to complete</source>
+        <translation>Ing wallet mangailangan yang misulat pasibayu: Umpisan yang pasibayu ing Voxels ban ma-kumpleto ya</translation>
     </message>
     <message>
         <source>Error loading wallet.dat</source>

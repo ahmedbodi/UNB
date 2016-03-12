@@ -5,84 +5,84 @@ AM_CPPFLAGS += -I$(top_srcdir)/src \
   -I$(top_builddir)/src/qt/forms \
   $(PROTOBUF_CFLAGS) \
   $(QR_CFLAGS)
-bin_PROGRAMS = bitcoin-qt
-noinst_LIBRARIES = libbitcoinqt.a
+bin_PROGRAMS = voxels-qt
+noinst_LIBRARIES = libvoxelsqt.a
 SUBDIRS = . $(BUILD_TEST_QT)
 DIST_SUBDIRS = . test
 
-# bitcoin qt core #
+# voxels qt core #
 QT_TS = \
-  locale/bitcoin_ach.ts \
-  locale/bitcoin_af_ZA.ts \
-  locale/bitcoin_ar.ts \
-  locale/bitcoin_be_BY.ts \
-  locale/bitcoin_bg.ts \
-  locale/bitcoin_bs.ts \
-  locale/bitcoin_ca_ES.ts \
-  locale/bitcoin_ca.ts \
-  locale/bitcoin_ca@valencia.ts \
-  locale/bitcoin_cmn.ts \
-  locale/bitcoin_cs.ts \
-  locale/bitcoin_cy.ts \
-  locale/bitcoin_da.ts \
-  locale/bitcoin_de.ts \
-  locale/bitcoin_el_GR.ts \
-  locale/bitcoin_en.ts \
-  locale/bitcoin_eo.ts \
-  locale/bitcoin_es_CL.ts \
-  locale/bitcoin_es_DO.ts \
-  locale/bitcoin_es_MX.ts \
-  locale/bitcoin_es.ts \
-  locale/bitcoin_es_UY.ts \
-  locale/bitcoin_et.ts \
-  locale/bitcoin_eu_ES.ts \
-  locale/bitcoin_fa_IR.ts \
-  locale/bitcoin_fa.ts \
-  locale/bitcoin_fi.ts \
-  locale/bitcoin_fr_CA.ts \
-  locale/bitcoin_fr.ts \
-  locale/bitcoin_gl.ts \
-  locale/bitcoin_gu_IN.ts \
-  locale/bitcoin_he.ts \
-  locale/bitcoin_hi_IN.ts \
-  locale/bitcoin_hr.ts \
-  locale/bitcoin_hu.ts \
-  locale/bitcoin_id_ID.ts \
-  locale/bitcoin_it.ts \
-  locale/bitcoin_ja.ts \
-  locale/bitcoin_ka.ts \
-  locale/bitcoin_kk_KZ.ts \
-  locale/bitcoin_ko_KR.ts \
-  locale/bitcoin_ky.ts \
-  locale/bitcoin_la.ts \
-  locale/bitcoin_lt.ts \
-  locale/bitcoin_lv_LV.ts \
-  locale/bitcoin_mn.ts \
-  locale/bitcoin_ms_MY.ts \
-  locale/bitcoin_nb.ts \
-  locale/bitcoin_nl.ts \
-  locale/bitcoin_pam.ts \
-  locale/bitcoin_pl.ts \
-  locale/bitcoin_pt_BR.ts \
-  locale/bitcoin_pt_PT.ts \
-  locale/bitcoin_ro_RO.ts \
-  locale/bitcoin_ru.ts \
-  locale/bitcoin_sah.ts \
-  locale/bitcoin_sk.ts \
-  locale/bitcoin_sl_SI.ts \
-  locale/bitcoin_sq.ts \
-  locale/bitcoin_sr.ts \
-  locale/bitcoin_sv.ts \
-  locale/bitcoin_th_TH.ts \
-  locale/bitcoin_tr.ts \
-  locale/bitcoin_uk.ts \
-  locale/bitcoin_ur_PK.ts \
-  locale/bitcoin_uz@Cyrl.ts \
-  locale/bitcoin_vi.ts \
-  locale/bitcoin_vi_VN.ts \
-  locale/bitcoin_zh_CN.ts \
-  locale/bitcoin_zh_HK.ts \
-  locale/bitcoin_zh_TW.ts
+  locale/voxels_ach.ts \
+  locale/voxels_af_ZA.ts \
+  locale/voxels_ar.ts \
+  locale/voxels_be_BY.ts \
+  locale/voxels_bg.ts \
+  locale/voxels_bs.ts \
+  locale/voxels_ca_ES.ts \
+  locale/voxels_ca.ts \
+  locale/voxels_ca@valencia.ts \
+  locale/voxels_cmn.ts \
+  locale/voxels_cs.ts \
+  locale/voxels_cy.ts \
+  locale/voxels_da.ts \
+  locale/voxels_de.ts \
+  locale/voxels_el_GR.ts \
+  locale/voxels_en.ts \
+  locale/voxels_eo.ts \
+  locale/voxels_es_CL.ts \
+  locale/voxels_es_DO.ts \
+  locale/voxels_es_MX.ts \
+  locale/voxels_es.ts \
+  locale/voxels_es_UY.ts \
+  locale/voxels_et.ts \
+  locale/voxels_eu_ES.ts \
+  locale/voxels_fa_IR.ts \
+  locale/voxels_fa.ts \
+  locale/voxels_fi.ts \
+  locale/voxels_fr_CA.ts \
+  locale/voxels_fr.ts \
+  locale/voxels_gl.ts \
+  locale/voxels_gu_IN.ts \
+  locale/voxels_he.ts \
+  locale/voxels_hi_IN.ts \
+  locale/voxels_hr.ts \
+  locale/voxels_hu.ts \
+  locale/voxels_id_ID.ts \
+  locale/voxels_it.ts \
+  locale/voxels_ja.ts \
+  locale/voxels_ka.ts \
+  locale/voxels_kk_KZ.ts \
+  locale/voxels_ko_KR.ts \
+  locale/voxels_ky.ts \
+  locale/voxels_la.ts \
+  locale/voxels_lt.ts \
+  locale/voxels_lv_LV.ts \
+  locale/voxels_mn.ts \
+  locale/voxels_ms_MY.ts \
+  locale/voxels_nb.ts \
+  locale/voxels_nl.ts \
+  locale/voxels_pam.ts \
+  locale/voxels_pl.ts \
+  locale/voxels_pt_BR.ts \
+  locale/voxels_pt_PT.ts \
+  locale/voxels_ro_RO.ts \
+  locale/voxels_ru.ts \
+  locale/voxels_sah.ts \
+  locale/voxels_sk.ts \
+  locale/voxels_sl_SI.ts \
+  locale/voxels_sq.ts \
+  locale/voxels_sr.ts \
+  locale/voxels_sv.ts \
+  locale/voxels_th_TH.ts \
+  locale/voxels_tr.ts \
+  locale/voxels_uk.ts \
+  locale/voxels_ur_PK.ts \
+  locale/voxels_uz@Cyrl.ts \
+  locale/voxels_vi.ts \
+  locale/voxels_vi_VN.ts \
+  locale/voxels_zh_CN.ts \
+  locale/voxels_zh_HK.ts \
+  locale/voxels_zh_TW.ts
 
 QT_FORMS_UI = \
   forms/aboutdialog.ui \
@@ -107,10 +107,10 @@ QT_MOC_CPP = \
   moc_addressbookpage.cpp \
   moc_addresstablemodel.cpp \
   moc_askpassphrasedialog.cpp \
-  moc_bitcoinaddressvalidator.cpp \
-  moc_bitcoinamountfield.cpp \
-  moc_bitcoingui.cpp \
-  moc_bitcoinunits.cpp \
+  moc_voxelsaddressvalidator.cpp \
+  moc_voxelsamountfield.cpp \
+  moc_voxelsgui.cpp \
+  moc_voxelsunits.cpp \
   moc_clientmodel.cpp \
   moc_coincontroldialog.cpp \
   moc_coincontroltreewidget.cpp \
@@ -148,31 +148,31 @@ QT_MOC_CPP = \
   moc_walletmodel.cpp \
   moc_walletview.cpp
 
-BITCOIN_MM = \
+VOXELS_MM = \
   macdockiconhandler.mm \
   macnotificationhandler.mm
 
 QT_MOC = \
-  bitcoin.moc \
+  voxels.moc \
   intro.moc \
   overviewpage.moc \
   rpcconsole.moc
 
-QT_QRC_CPP = qrc_bitcoin.cpp
-QT_QRC = bitcoin.qrc
+QT_QRC_CPP = qrc_voxels.cpp
+QT_QRC = voxels.qrc
 
 PROTOBUF_CC = paymentrequest.pb.cc
 PROTOBUF_H = paymentrequest.pb.h
 PROTOBUF_PROTO = paymentrequest.proto
 
-BITCOIN_QT_H = \
+VOXELS_QT_H = \
   addressbookpage.h \
   addresstablemodel.h \
   askpassphrasedialog.h \
-  bitcoinaddressvalidator.h \
-  bitcoinamountfield.h \
-  bitcoingui.h \
-  bitcoinunits.h \
+  voxelsaddressvalidator.h \
+  voxelsamountfield.h \
+  voxelsgui.h \
+  voxelsunits.h \
   clientmodel.h \
   coincontroldialog.h \
   coincontroltreewidget.h \
@@ -218,10 +218,10 @@ BITCOIN_QT_H = \
 RES_ICONS = \
   res/icons/add.png \
   res/icons/address-book.png \
-  res/icons/bitcoin.ico \
-  res/icons/bitcoin.png \
-  res/icons/bitcoin_testnet.ico \
-  res/icons/bitcoin_testnet.png \
+  res/icons/voxels.ico \
+  res/icons/voxels.png \
+  res/icons/voxels_testnet.ico \
+  res/icons/voxels_testnet.png \
   res/icons/clock1.png \
   res/icons/clock2.png \
   res/icons/clock3.png \
@@ -260,12 +260,12 @@ RES_ICONS = \
   res/icons/tx_output.png \
   res/icons/tx_mined.png
 
-BITCOIN_QT_CPP = \
-  bitcoin.cpp \
-  bitcoinaddressvalidator.cpp \
-  bitcoinamountfield.cpp \
-  bitcoingui.cpp \
-  bitcoinunits.cpp \
+VOXELS_QT_CPP = \
+  voxels.cpp \
+  voxelsaddressvalidator.cpp \
+  voxelsamountfield.cpp \
+  voxelsgui.cpp \
+  voxelsunits.cpp \
   clientmodel.cpp \
   csvmodelwriter.cpp \
   guiutil.cpp \
@@ -283,7 +283,7 @@ BITCOIN_QT_CPP = \
   winshutdownmonitor.cpp
 
 if ENABLE_WALLET
-BITCOIN_QT_CPP += \
+VOXELS_QT_CPP += \
   addressbookpage.cpp \
   addresstablemodel.cpp \
   askpassphrasedialog.cpp \
@@ -319,40 +319,40 @@ RES_IMAGES = \
 
 RES_MOVIES = $(wildcard res/movies/spinner-*.png)
 
-BITCOIN_RC = res/bitcoin-qt-res.rc
+VOXELS_RC = res/voxels-qt-res.rc
 
-libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
+libvoxelsqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms $(QT_DBUS_INCLUDES)
-libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+libvoxelsqt_a_SOURCES = $(VOXELS_QT_CPP) $(VOXELS_QT_H) $(QT_FORMS_UI) \
   $(QT_QRC) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
 
-nodist_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+nodist_libvoxelsqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP)
 
-BUILT_SOURCES = $(nodist_libbitcoinqt_a_SOURCES)
+BUILT_SOURCES = $(nodist_libvoxelsqt_a_SOURCES)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# bitcoin-qt binary #
-bitcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
+# voxels-qt binary #
+voxels_qt_CPPFLAGS = $(AM_CPPFLAGS) $(QT_INCLUDES) \
   -I$(top_srcdir)/src/qt/forms
-bitcoin_qt_SOURCES = bitcoin.cpp
+voxels_qt_SOURCES = voxels.cpp
 if TARGET_DARWIN
-  bitcoin_qt_SOURCES += $(BITCOIN_MM)
+  voxels_qt_SOURCES += $(VOXELS_MM)
 endif
 if TARGET_WINDOWS
-  bitcoin_qt_SOURCES += $(BITCOIN_RC)
+  voxels_qt_SOURCES += $(VOXELS_RC)
 endif
-bitcoin_qt_LDADD = libbitcoinqt.a $(LIBBITCOIN_SERVER)
+voxels_qt_LDADD = libvoxelsqt.a $(LIBVOXELS_SERVER)
 if ENABLE_WALLET
-bitcoin_qt_LDADD += $(LIBBITCOIN_WALLET)
+voxels_qt_LDADD += $(LIBVOXELS_WALLET)
 endif
-bitcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
+voxels_qt_LDADD += $(LIBVOXELS_CLI) $(LIBVOXELS_COMMON) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS)
-bitcoin_qt_LDFLAGS = $(QT_LDFLAGS)
+voxels_qt_LDFLAGS = $(QT_LDFLAGS)
 
 # forms/foo.h -> forms/ui_foo.h
 QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
@@ -363,15 +363,15 @@ QT_QM=$(QT_TS:.ts=.qm)
 .PHONY: FORCE
 .SECONDARY: $(QT_QM)
 
-bitcoinstrings.cpp: FORCE
-	$(MAKE) -C $(top_srcdir)/src qt/bitcoinstrings.cpp
+voxelsstrings.cpp: FORCE
+	$(MAKE) -C $(top_srcdir)/src qt/voxelsstrings.cpp
 
-translate: bitcoinstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: voxelsstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(VOXELS_QT_CPP) $(VOXELS_QT_H) $(VOXELS_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/bitcoin_en.ts
+	@QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts locale/voxels_en.ts
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_QM) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
-	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin -o $(abs_builddir)/$@ $< || \
+	@cd $(abs_srcdir); test -f $(RCC) && QT_SELECT=$(QT_SELECT) $(RCC) -name voxels -o $(abs_builddir)/$@ $< || \
 	  echo error: could not build $@
 	$(SED) -e '/^\*\*.*Created:/d' $@ > $@.n && mv $@{.n,}
 	$(SED) -e '/^\*\*.*by:/d' $@  > $@.n && mv $@{.n,}

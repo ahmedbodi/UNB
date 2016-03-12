@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2013 The Bitcoin developers
+// Copyright (c) 2009-2013 The Voxels developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_TXDB_LEVELDB_H
-#define BITCOIN_TXDB_LEVELDB_H
+#ifndef VOXELS_TXDB_LEVELDB_H
+#define VOXELS_TXDB_LEVELDB_H
 
 #include "leveldbwrapper.h"
 #include "main.h"
@@ -71,4 +71,4 @@ public:
     bool WriteCheckpointPubKey(const std::string& strPubKey);
 };
 
-#endif // BITCOIN_TXDB_LEVELDB_H
+#endif // VOXELS_TXDB_LEVELDB_H
