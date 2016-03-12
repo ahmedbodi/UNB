@@ -13,6 +13,7 @@
 
 #include <stdexcept>
 #include <vector>
+#include <openssl/ec.h> // for EC_KEY definition
 
 // secp256k1:
 // const unsigned int PRIVATE_KEY_SIZE = 279;
@@ -21,6 +22,12 @@
 //
 // see www.keylength.com
 // script supports up to 75 for single byte push
+
+class key_error : public std::runtime_error
+{
+public:
+    explicit key_error(const std::string& str) : std::runtime_error(str) {}
+};
 
 /** A reference to a CKey: the Hash160 of its serialized public key */
 class CKeyID : public uint160
@@ -168,15 +175,21 @@ public:
 
     // Derive BIP32 child pubkey.
     bool Derive(CPubKey& pubkeyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const;
+    std::vector<unsigned char> Raw() const {
+        return std::vector<unsigned char>(vch, vch+size());
+    }
 };
 
 
 // secure_allocator is defined in allocators.h
 // CPrivKey is a serialized private key, with all parameters included (279 bytes)
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
-
 /** An encapsulated private key. */
 class CKey {
+protected:
+    EC_KEY* pkey;
+    bool fSet;
+    bool fCompressedPubKey;
 private:
     // Whether this private key is valid. We check for correctness when modifying the key
     // data, so fValid should always correspond to the actual state.
@@ -236,13 +249,14 @@ public:
 
     // Check whether this private key is valid.
     bool IsValid() const { return fValid; }
-
+    void Reset();
     // Check whether the public key corresponding to this private key is (to be) compressed.
     bool IsCompressed() const { return fCompressed; }
-
+    void SetCompressedPubKey(bool fCompressed = true);
     // Initialize from a CPrivKey (serialized OpenSSL private key data).
     bool SetPrivKey(const CPrivKey &vchPrivKey, bool fCompressed);
-
+    bool SetPubKey(const CPubKey& vchPubKey);
+    bool Verify(uint256 hash, const std::vector<unsigned char>& vchSig);
     // Generate a new private key using a cryptographic PRNG.
     void MakeNewKey(bool fCompressed);
 
@@ -253,6 +267,9 @@ public:
     // Compute the public key from a private key.
     // This is expensive.
     CPubKey GetPubKey() const;
+
+    bool SetSecret(const CPrivKey& vchSecret, bool fCompressed = false);
+    CPrivKey GetSecret(bool &fCompressed) const;
 
     // Create a DER-serialized signature.
     bool Sign(const uint256 &hash, std::vector<unsigned char>& vchSig) const;

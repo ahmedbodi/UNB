@@ -213,7 +213,7 @@ BITCOIN_QT_H = \
   walletmodel.h \
   walletmodeltransaction.h \
   walletview.h \
-  winshutdownmonitor.h
+  winshutdownmonitor.h 
 
 RES_ICONS = \
   res/icons/add.png \

@@ -652,3 +652,81 @@ bool ECC_InitSanityCheck() {
 }
 
 
+bool CKey::SetSecret(const CPrivKey& vchSecret, bool fCompressed)
+{
+    EC_KEY_free(pkey);
+    pkey = EC_KEY_new_by_curve_name(NID_secp256k1);
+    if (pkey == NULL)
+        throw key_error("CKey::SetSecret() : EC_KEY_new_by_curve_name failed");
+    if (vchSecret.size() != 32)
+        throw key_error("CKey::SetSecret() : secret must be 32 bytes");
+    BIGNUM *bn = BN_bin2bn(&vchSecret[0],32,BN_new());
+    if (bn == NULL)
+        throw key_error("CKey::SetSecret() : BN_bin2bn failed");
+    if (!EC_KEY_regenerate_key(pkey,bn))
+    {
+        BN_clear_free(bn);
+        throw key_error("CKey::SetSecret() : EC_KEY_regenerate_key failed");
+    }
+    BN_clear_free(bn);
+    fSet = true;
+    if (fCompressed || fCompressedPubKey)
+        SetCompressedPubKey();
+    return true;
+}
+
+CPrivKey CKey::GetSecret(bool &fCompressed) const
+{
+    CPrivKey vchRet;
+    vchRet.resize(32);
+    const BIGNUM *bn = EC_KEY_get0_private_key(pkey);
+    int nBytes = BN_num_bytes(bn);
+    if (bn == NULL)
+        throw key_error("CKey::GetSecret() : EC_KEY_get0_private_key failed");
+    int n=BN_bn2bin(bn,&vchRet[32 - nBytes]);
+    if (n != nBytes)
+        throw key_error("CKey::GetSecret(): BN_bn2bin failed");
+    fCompressed = fCompressedPubKey;
+    return vchRet;
+}
+
+bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSig)
+{
+    // -1 = error, 0 = bad sig, 1 = good
+    if (ECDSA_verify(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], vchSig.size(), pkey) != 1)
+        return false;
+
+    return true;
+}
+
+bool CKey::SetPubKey(const CPubKey& vchPubKey)
+{
+    const unsigned char* pbegin = vchPubKey.begin();
+    if (o2i_ECPublicKey(&pkey, &pbegin, vchPubKey.size()))
+    {
+        fSet = true;
+        if (vchPubKey.size() == 33)
+            SetCompressedPubKey();
+        return true;
+    }
+    pkey = NULL;
+    Reset();
+    return false;
+}
+
+void CKey::SetCompressedPubKey(bool fCompressed)
+{
+    EC_KEY_set_conv_form(pkey, fCompressed ? POINT_CONVERSION_COMPRESSED : POINT_CONVERSION_UNCOMPRESSED);
+    fCompressedPubKey = true;
+}
+
+void CKey::Reset()
+{
+    fCompressedPubKey = false;
+    if (pkey != NULL)
+        EC_KEY_free(pkey);
+    pkey = EC_KEY_new_by_curve_name(NID_secp256k1);
+    if (pkey == NULL)
+        throw key_error("CKey::CKey() : EC_KEY_new_by_curve_name failed");
+    fSet = false;
+}

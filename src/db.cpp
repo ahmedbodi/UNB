@@ -9,7 +9,6 @@
 #include "hash.h"
 #include "protocol.h"
 #include "util.h"
-
 #include <stdint.h>
 
 #ifndef WIN32

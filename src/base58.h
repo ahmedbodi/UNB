@@ -123,12 +123,18 @@ class CBitcoinSecret : public CBase58Data
 public:
     void SetKey(const CKey& vchSecret);
     CKey GetKey();
+    CPrivKey GetSecret(bool &fCompressedOut);
+    void SetSecret(const CPrivKey& vchSecret, bool fCompressed);
     bool IsValid() const;
     bool SetString(const char* pszSecret);
     bool SetString(const std::string& strSecret);
 
     CBitcoinSecret(const CKey& vchSecret) { SetKey(vchSecret); }
     CBitcoinSecret() {}
+    CBitcoinSecret(const CPrivKey& vchSecret, bool fCompressed)
+    {
+        SetSecret(vchSecret, fCompressed);
+     }
 };
 
 template<typename K, int Size, CChainParams::Base58Type Type> class CBitcoinExtKeyBase : public CBase58Data

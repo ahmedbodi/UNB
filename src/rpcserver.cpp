@@ -223,6 +223,12 @@ Value stop(const Array& params, bool fHelp)
 static const CRPCCommand vRPCCommands[] =
 { //  name                      actor (function)         okSafeMode threadSafe reqWallet
   //  ------------------------  -----------------------  ---------- ---------- ---------
+    /* Checkpoint Control */
+    { "getcheckpoint",          &getcheckpoint,          true, 	    false,	false },
+    { "sendcheckpoint",         &sendcheckpoint,         true, 	    false, 	false },
+    { "enforcecheckpoint",      &enforcecheckpoint,      true, 	    false, 	false },
+    { "makekeypair",            &makekeypair,            true, 	    false, 	false },
+
     /* Overall control/query calls */
     { "getinfo",                &getinfo,                true,      false,      false }, /* uses wallet if enabled */
     { "help",                   &help,                   true,      true,       false },

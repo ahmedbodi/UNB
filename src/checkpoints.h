@@ -27,6 +27,8 @@ namespace Checkpoints
     double GuessVerificationProgress(CBlockIndex *pindex, bool fSigchecks = true);
 
     extern bool fEnabled;
+    uint256 GetLatestHardenedCheckpoint();
+
 }
 
 #endif

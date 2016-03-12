@@ -34,8 +34,10 @@ class CBloomFilter;
 class CInv;
 
 #define COINFIX1_BLOCK (15000)
-#define COINFIX2_BLOCK (62000)
-
+#define COINFIX2_BLOCK (62250)
+/* Maturity threshold for PoW base transactions, in blocks (confirmations) */
+extern int nBaseMaturity;
+static const int BASE_MATURITY = 100;
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 /** Default for -blockmaxsize and -blockminsize, which control the range of sizes the mining code will create **/
@@ -59,8 +61,6 @@ static const unsigned int BLOCKFILE_CHUNK_SIZE = 0x1000000; // 16 MiB
 static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 static const int COINBASE_MATURITY = 30;
-/** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
-static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 /** Maximum number of script-checking threads allowed */
 static const int MAX_SCRIPTCHECK_THREADS = 16;
 /** -par default (number of script-checking threads, 0 = auto) */
@@ -86,13 +86,15 @@ static const unsigned char REJECT_DUST = 0x41;
 static const unsigned char REJECT_INSUFFICIENTFEE = 0x42;
 static const unsigned char REJECT_CHECKPOINT = 0x43;
 
-
+extern CBlockIndex* pindexBest;
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
 extern CTxMemPool mempool;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
+extern int nBestHeight;
 extern uint64_t nLastBlockTx;
 extern uint64_t nLastBlockSize;
+extern std::map<uint256, CBlock*> mapOrphanBlocksA; //for checkpointsync.cpp
 extern const std::string strMessageMagic;
 extern int64_t nTimeBestReceived;
 extern bool fImporting;
@@ -169,6 +171,8 @@ bool IsInitialBlockDownload();
 std::string GetWarnings(std::string strFor);
 /** Retrieve a transaction (from memory pool, or from disk, if possible) */
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock, bool fAllowSlow = false);
+/** Connect/disconnect blocks until pindexNew is the new tip of the active block chain */
+bool SetBestChain(CValidationState &state, CBlockIndex* pindexNew);
 /** Find the best known block, and make it the tip of the block chain */
 bool ActivateBestChain(CValidationState &state);
 int64_t GetBlockValue(int nHeight, int64_t nFees);
@@ -696,6 +700,10 @@ public:
     // pointer to the index of the predecessor of this block
     CBlockIndex* pprev;
 
+
+    // (memory only) pointer to the index of the *active* successor of this block
+    CBlockIndex* pnext;
+
     // height of the entry in the chain. The genesis block has height 0
     int nHeight;
 
@@ -866,6 +874,11 @@ public:
     void print() const
     {
         LogPrintf("%s\n", ToString().c_str());
+    }
+
+    bool IsInMainChain() const
+    {
+	return (pnext || this == pindexBest);
     }
 };
 

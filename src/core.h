@@ -18,6 +18,10 @@ class CTransaction;
 /** No amount larger than this (in satoshi) is valid */
 static const int64_t MAX_MONEY = 210000000 * COIN; // maximum number of coins
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
+extern int nBestHeight;
+
+/** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
+static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
 class COutPoint
@@ -251,6 +255,23 @@ public:
 
     std::string ToString() const;
     void print() const;
+
+    bool IsFinal(int nBlockHeight=0, int64_t nBlockTime=0) const
+    {
+        // Time based nLockTime implemented in 0.1.6
+        if (nLockTime == 0)
+            return true;
+        if (nBlockHeight == 0)
+            nBlockHeight = nBestHeight;
+        if (nBlockTime == 0)
+            nBlockTime = GetAdjustedTime();
+        if ((int64_t)nLockTime < ((int64_t)nLockTime < LOCKTIME_THRESHOLD ? (int64_t)nBlockHeight : nBlockTime))
+            return true;
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            if (!txin.IsFinal())
+                return false;
+        return true;
+    }
 };
 
 /** wrapper for CTxOut that provides a more compact serialization */
