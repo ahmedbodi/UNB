@@ -67,7 +67,7 @@
 #include "checkpointsync.h"
 
 #include "base58.h"
-//#include "bitcoinrpc.h"
+//#include "voxelsrpc.h"
 #include "rpcserver.h"
 #include "main.h"
 #include "txdb.h"
@@ -323,7 +323,7 @@ bool SetCheckpointPrivKey(std::string strPrivKey)
     sMsg << (CUnsignedSyncCheckpoint)checkpoint;
     checkpoint.vchMsg = std::vector<unsigned char>(sMsg.begin(), sMsg.end());
 
-    CBitcoinSecret vchSecret;
+    CVoxelsSecret vchSecret;
     if (!vchSecret.SetString(strPrivKey))
         return error("SendSyncCheckpoint: Checkpoint master key invalid");
     //CKey key = vchSecret.GetKey(); // if key is not correct openssl may crash
@@ -349,7 +349,7 @@ bool SendSyncCheckpoint(uint256 hashCheckpoint)
 
     if (CSyncCheckpoint::strMasterPrivKey.empty())
         return error("SendSyncCheckpoint: Checkpoint master key unavailable.");
-    CBitcoinSecret vchSecret;
+    CVoxelsSecret vchSecret;
     if (!vchSecret.SetString(CSyncCheckpoint::strMasterPrivKey))
         return error("SendSyncCheckpoint: Checkpoint master key invalid");
     //CKey key = vchSecret.GetKey(); // if key is not correct openssl may crash
@@ -579,6 +579,6 @@ Value makekeypair(const Array& params, bool fHelp)
     CPrivKey vchSecret = key.GetSecret(fCompressed);
     Object result;
     result.push_back(Pair("PublicKey", HexStr(key.GetPubKey().Raw())));
-    result.push_back(Pair("PrivateKey", CBitcoinSecret(vchSecret, fCompressed).ToString()));
+    result.push_back(Pair("PrivateKey", CVoxelsSecret(vchSecret, fCompressed).ToString()));
     return result;
 }

@@ -1,12 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Bitcoin
-Comment=Bitcoin P2P Cryptocurrency
-Comment[fr]=Bitcoin, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Bitcoin, eşten eşe kriptografik sanal para birimi
-Exec=bitcoin-qt %u
+Name=Voxels
+Comment=Voxels P2P Cryptocurrency
+Comment[fr]=Voxels, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Voxels, eşten eşe kriptografik sanal para birimi
+Exec=voxels-qt %u
 Terminal=false
 Type=Application
-Icon=bitcoin128
-MimeType=x-scheme-handler/bitcoin;
+Icon=voxels128
+MimeType=x-scheme-handler/voxels;
 Categories=Office;Finance;

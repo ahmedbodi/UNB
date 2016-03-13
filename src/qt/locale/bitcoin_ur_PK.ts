@@ -88,7 +88,7 @@
     </message>
     </context>
 <context>
-    <name>BitcoinGUI</name>
+    <name>VoxelsGUI</name>
     <message>
         <source>Error</source>
         <translation>نقص</translation>
@@ -326,7 +326,7 @@
     </message>
     </context>
 <context>
-    <name>bitcoin-core</name>
+    <name>voxels-core</name>
     <message>
         <source>This help message</source>
         <translation>یہ مدد کا پیغام</translation>

@@ -1,6 +1,6 @@
 [Protocol]
-exec=bitcoin-qt '%u'
-protocol=bitcoin
+exec=voxels-qt '%u'
+protocol=voxels
 input=none
 output=none
 helper=true
