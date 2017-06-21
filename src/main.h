@@ -34,16 +34,6 @@ class CBlockIndex;
 class CBloomFilter;
 class CInv;
 
-#define COINFIX1_BLOCK (15000)
-#define COINFIX2_BLOCK (62250)
-
-/** Address for all block rewards **/
-inline CScript GetFoundationScript() {
-	CVoxelsAddress address("VL1Z9YopuoGHW7UUvARviWLrnCfwrGganJ");
-	CScript script;
-	script.SetDestination(address.Get());
-	return script;
-}
 /* Maturity threshold for PoW base transactions, in blocks (confirmations) */
 extern int nBaseMaturity;
 static const int BASE_MATURITY = 100;

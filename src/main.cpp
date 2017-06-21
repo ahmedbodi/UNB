@@ -961,7 +961,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, const CTransa
             LOCK(csFreeLimiter);
 
             // Use an exponentially decaying ~10-minute window:
-            dFreeCount *= pow(1.0 - 1.0/600.0, (double)(nNow - nLastTime));
+            dFreeCount *= pow(1.0 - 1.0/100.0, (double)(nNow - nLastTime));
             nLastTime = nNow;
             // -limitfreerelay unit is thousand-bytes-per-minute
             // At default rate it would take over a month to fill 1GB
@@ -1216,20 +1216,17 @@ void static PruneOrphanBlocks()
 
 int64_t GetBlockValue(int nHeight, int64_t nFees)
 {
-    int64_t nSubsidy = .000001 * COIN;
-    nSubsidy >>= (nHeight / 500000000); // Voxels: 500m blocks
-    
-      if(nHeight < 3){
-        nSubsidy = 104999775 * COIN; // Full Premine
-    }
+    int64_t nSubsidy = 50 * COIN;
 
-    return nSubsidy + nFees;
+    // Subsidy is cut in half every 800000 blocks, which will occur approximately every 4 years
+    nSubsidy >>= (nHeight / 800000);
+
+	return nSubsidy + nFees;
 }
 
-static const int64_t nTargetTimespan = 3 * 60 * 60; // two weeks
-static const int64_t nTargetSpacing = 3 * 60;
+static const int64_t nTargetTimespan = 14 * 24 * 60 * 60; // two weeks
+static const int64_t nTargetSpacing = 10 * 60;
 static const int64_t nInterval = nTargetTimespan / nTargetSpacing;
-static const int64_t nReTargetHistoryFact = 4; // look at 4 times the retarget interval into the block history
 
 //
 // minimum amount of work that could possibly be required nTime after
@@ -1237,7 +1234,7 @@ static const int64_t nReTargetHistoryFact = 4; // look at 4 times the retarget i
 //
 unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime)
 {
-    const CBigNum &bnLimit = Params().ProofOfWorkLimit();
+ 	const CBigNum &bnLimit = Params().ProofOfWorkLimit();
     // Testnet has min-difficulty blocks
     // after nTargetSpacing*2 time between blocks:
     if (TestNet() && nTime > nTargetSpacing*2)
@@ -1257,9 +1254,9 @@ unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime)
     return bnResult.GetCompact();
 }
 
-unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
 {
-    unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
+ 	unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit().GetCompact();
 
     // Genesis block
     if (pindexLast == NULL)
@@ -1288,28 +1285,14 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
         return pindexLast->nBits;
     }
 
-    // Litecoin: This fixes an issue where a 51% attack can change difficulty at will.
-    // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
-    int blockstogoback = nInterval-1;
-    if ((pindexLast->nHeight+1) != nInterval)
-        blockstogoback = nInterval;
-    if (pindexLast->nHeight > COINFIX1_BLOCK) {
-        blockstogoback = nReTargetHistoryFact * nInterval;
-    }
-
-    // Go back by what we want to be nReTargetHistoryFact*nInterval blocks
+    // Go back by what we want to be 14 days worth of blocks
     const CBlockIndex* pindexFirst = pindexLast;
-    for (int i = 0; pindexFirst && i < blockstogoback; i++)
+    for (int i = 0; pindexFirst && i < nInterval-1; i++)
         pindexFirst = pindexFirst->pprev;
     assert(pindexFirst);
 
     // Limit adjustment step
-    int64_t nActualTimespan = 0;
-    if (pindexLast->nHeight > COINFIX1_BLOCK)
-        // obtain average actual timespan
-        nActualTimespan = (pindexLast->GetBlockTime() - pindexFirst->GetBlockTime())/nReTargetHistoryFact;
-    else
-        nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
     if (nActualTimespan < nTargetTimespan/4)
         nActualTimespan = nTargetTimespan/4;
     if (nActualTimespan > nTargetTimespan*4)
@@ -1321,104 +1304,20 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
     bnNew *= nActualTimespan;
     bnNew /= nTargetTimespan;
 
+
     if (bnNew > Params().ProofOfWorkLimit())
-        bnNew = Params().ProofOfWorkLimit();
+		bnNew = Params().ProofOfWorkLimit();
 
-    /// debug print
-    LogPrintf("GetNextWorkRequired V1 RETARGET\n");
-    LogPrintf("Before: %08x %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
-    LogPrintf("After: %08x %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
     return bnNew.GetCompact();
 }
 
-unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const CBlockHeader *pblock, uint64_t TargetBlocksSpacingSeconds, uint64_t PastBlocksMin, uint64_t PastBlocksMax) {
-    /* current difficulty formula, Anoncoin - kimoto gravity well */
-    const CBlockIndex *BlockLastSolved = pindexLast;
-    const CBlockIndex *BlockReading = pindexLast;
-    const CBlockHeader *BlockCreating = pblock;
-    BlockCreating = BlockCreating;
-	
-    uint64_t PastBlocksMass = 0;
-    int64_t PastRateActualSeconds = 0;
-    int64_t PastRateTargetSeconds = 0;
-    double PastRateAdjustmentRatio = double(1);
-    CBigNum PastDifficultyAverage;
-    CBigNum PastDifficultyAveragePrev;
-    double EventHorizonDeviation;
-    double EventHorizonDeviationFast;
-    double EventHorizonDeviationSlow;
-
-    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || (uint64_t)BlockLastSolved->nHeight < PastBlocksMin) { return Params().ProofOfWorkLimit().GetCompact(); }
-
-    for (unsigned int i = 1; BlockReading && BlockReading->nHeight > 0; i++) {
-        if (PastBlocksMax > 0 && i > PastBlocksMax) { break; }
-        PastBlocksMass++;
-
-        if (i == 1) { PastDifficultyAverage.SetCompact(BlockReading->nBits); }
-        else { PastDifficultyAverage = ((CBigNum().SetCompact(BlockReading->nBits) - PastDifficultyAveragePrev) / i) + PastDifficultyAveragePrev; }
-        PastDifficultyAveragePrev = PastDifficultyAverage;
-
-        PastRateActualSeconds = BlockLastSolved->GetBlockTime() - BlockReading->GetBlockTime();
-        PastRateTargetSeconds = TargetBlocksSpacingSeconds * PastBlocksMass;
-        PastRateAdjustmentRatio = double(1);
-        if (PastRateActualSeconds < 0) { PastRateActualSeconds = 0; }
-        if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
-        PastRateAdjustmentRatio = double(PastRateTargetSeconds) / double(PastRateActualSeconds);
-        }
-        EventHorizonDeviation = 1 + (0.7084 * pow((double(PastBlocksMass)/double(144)), -1.228));
-        EventHorizonDeviationFast = EventHorizonDeviation;
-        EventHorizonDeviationSlow = 1 / EventHorizonDeviation;
-
-        if (PastBlocksMass >= PastBlocksMin) {
-            if ((PastRateAdjustmentRatio <= EventHorizonDeviationSlow) || (PastRateAdjustmentRatio >= EventHorizonDeviationFast)) { assert(BlockReading); break; }
-        }
-        if (BlockReading->pprev == NULL) { assert(BlockReading); break; }
-        BlockReading = BlockReading->pprev;
-    }
-
-    CBigNum bnNew(PastDifficultyAverage);
-    if (PastRateActualSeconds != 0 && PastRateTargetSeconds != 0) {
-        bnNew *= PastRateActualSeconds;
-        bnNew /= PastRateTargetSeconds;
-    }
-    if (bnNew > Params().ProofOfWorkLimit()) {
-	bnNew = Params().ProofOfWorkLimit();
-    }
-
-    /// debug print
-    LogPrintf("GetNextWorkRequired V1 RETARGET\n");
-    LogPrintf("Before: %08x %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
-    LogPrintf("After: %08x %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
-    return bnNew.GetCompact();
-}
-
-unsigned int static GetNextWorkRequired_V2(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
-{
-    static const int64_t BlocksTargetSpacing = 60; // 1 minutes
-    unsigned int TimeDaySeconds = 60 * 60 * 24;
-    int64_t PastSecondsMin = TimeDaySeconds*0.25;
-    int64_t PastSecondsMax = TimeDaySeconds*1;
-    uint64_t PastBlocksMin = PastSecondsMin / BlocksTargetSpacing;
-    uint64_t PastBlocksMax = PastSecondsMax / BlocksTargetSpacing;
-
-    return KimotoGravityWell(pindexLast, pblock, BlocksTargetSpacing, PastBlocksMin, PastBlocksMax);
-}
-
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock)
-{
-    assert(pindexLast);
-
-    int height = pindexLast->nHeight + 1;
-
-    if(height < 67000)
-        return GetNextWorkRequired_V1(pindexLast, pblock);
-
-    return GetNextWorkRequired_V2(pindexLast, pblock);
-}
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 {
     CBigNum bnTarget;
     bnTarget.SetCompact(nBits);
+
+    if (hash == Params().HashGenesisBlock())
+        return true;
 
     // Check range
     if (bnTarget <= 0 || bnTarget > Params().ProofOfWorkLimit())
@@ -1957,14 +1856,6 @@ bool ConnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, C
                          error("ConnectBlock() : coinbase pays too much (actual=%d vs limit=%d)",
                                block.vtx[0].GetValueOut(), GetBlockValue(pindex->nHeight, nFees)),
                                REJECT_INVALID, "bad-cb-amount");
-
-    // All block rewards are to be paid to the foundation
-    if (block.vtx[0].vout[0].scriptPubKey != GetFoundationScript()) {
-	return state.DoS(100, error("ConnectBLock() : coinbase does not pay to the charity in the first output"));
-    }
-    if (block.vtx[0].vout[0].nValue < GetBlockValue(pindex->nHeight, nFees)) {
-	return state.DoS(100, error("ConnectBlock() : coinbase does not pay enough to the charity in the first output"));
-    }
 
     if (!control.Wait())
         return state.DoS(100, false);

@@ -16,7 +16,7 @@
 class CTransaction;
 
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 210000000 * COIN; // maximum number of coins
+static const int64_t MAX_MONEY = 80000000 * COIN;
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 extern int nBestHeight;
 
